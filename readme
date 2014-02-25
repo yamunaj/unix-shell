@@ -1,0 +1,94 @@
+Files Included :
+
+.c Files :
+
+	1. shell.c
+	2. setup.c
+	3. history.c
+
+.h Files :
+
+	1. shell.h
+	2. history.h
+	3. var.h
+
+Other files:
+	
+	1. Makefile
+	2. readme file
+	3. readme_old file
+
+Compiling:
+	
+	The Makefile contains the commands for compiling the source files.
+	To compile enter the following command.
+
+	$ make
+	
+	This will create shell.o, setup.o, history.o and an executable file shell_yj
+
+Clean: 
+
+	To clean enter the following command.
+
+	$ make clean
+
+	This will remove the obj files and the executable file shell_yj
+
+Execute:
+
+	To execute enter the following
+	
+	$ ./shell_yj
+
+
+Cases Handled :
+
+Case 1:	Command -> ls | grep test
+	Command -> ls|grep test
+	
+	Ouptut of ls is fed to pipe instead of stdout and input to grep is taken from pipe instead of stdin.
+	Output of grep test is printed.
+
+Case 2:	Command -> ls > check.txt
+	Command -> ls>check.txt
+	
+	Output of ls is fed to file check.txt instead of stdout.
+
+Case 3: Command -> ls | grep test > check.txt
+	Command -> ls|grep test>check.txt
+
+	Same as Case 1 except that output of grep is fed to file check.txt instead of stdout.
+
+Case 4: Command -> ls > out\>out
+	Command -> ls>out\>out
+	
+	Output of ls is fed to file out>out.
+
+Case 5:	Command -> grep test < in\<in
+	Command -> grep test<in\<in
+	
+	Input to grep test is taken from file in<in.
+
+Case 6:	Command -> ls|grep test|grep i -i|grep n -i|wc
+	Command -> ls | grep test | grep i -i | grep n -i | wc
+
+	Output of wc is printed. The will handle upto 5 pipes(i.e., 6 commands)
+
+Case 7: Command -> ls|grep test|grep i -i|grep n -i|wc>output.txt
+	Command -> ls | grep test | grep i -i | grep n -i | wc > output.txt
+
+	Output of wc is put n file output.txt.	
+
+Case 8: Command -> ls > out\|put.txt
+	Command -> ls>out\|put.txt
+
+	Output of ls is fed to file out|put.
+
+Case 9: Command -> grep test < out\|put.txt | grep i -i | wc > out\&put.txt
+	Command -> grep test<out\|put.txt|grep i -i|wc>out\&put.txt
+
+	Input of grep test is taken from file out|put.txt and output of command wc is fed to file out&put.txt.
+
+Note : Refer readme_old file for the cases handled in previous version (not including pipes and file re-direction).	
+

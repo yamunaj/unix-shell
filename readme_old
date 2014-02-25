@@ -1,0 +1,53 @@
+Cases Handled (Not including pipes and file re-direction) :
+
+Case 1:	Command -> ls
+	
+	Ouptut of ls is printed. All similar shell commands are handled.
+
+Case 2:	Command -> ls&
+	Command -> ls &
+	
+	The parent will not wait for child to exit. So the output is printed after the parent print 'Command ->' for 
+	next input.
+
+Case 3: Command -> ^C
+
+	The history is listed. The last entry in the list is the previous(last) command enetered. 0 represents the 
+	command that was entered 9 commands before. 
+
+Case 4: Command -> !0
+	
+	The 0th position command is executed.
+
+Case 5:	Command -> !9
+	
+	The 9th position command ( the last entered command) is executed
+
+Case 6:	Command -> !!
+
+	The last entered command is executed.
+
+Case 7: Command -> !0&
+
+	The 0th command is executed in background. The parent process will not wait for child process to exit.
+	
+Case 8: 
+	If the input size is greater than 80 then it is considered an invalid input.
+
+Case 9 : Command -> ls t\ s
+	
+	If 't s' is a directory inside current directory. Then to list the contents of it, the input must be in format t\ s.
+	Then the setup will parse the input so that the escape sequence '\' is removed and "t s" is passed 
+	as the argument to execvp function.
+
+Case 10 : Command -> ls a\&b
+
+	If there is a directory 'a&b', then to list the contents of it, the input must be in format a\&b. 
+	The setup funcation will parse the input and "a&b" is passed as the argument to execvp function.
+
+Case 11 : Command -> ^D
+	
+	Ends the process (i.e., exit from program).
+
+	
+
